@@ -9,7 +9,7 @@ public class simpson {
     private static char[][] tablero;
 
     public static void imprimirtablero(){
-        //4º) Imprimir tablero
+        // Imprimir tablero
         for (int i = 0; i < MAX_FILA_TABLERO; i++) {
             for (int j = 0; j < MAX_COLUMNA_TABLERO; j++) {
                 System.out.print(tablero[i][j] + " ");
@@ -17,50 +17,48 @@ public class simpson {
             System.out.println("");
         }
     }
+    private static void asignarcasillasLibres(char caracter){
+        // Rellenar el tablero de caracter "-"
+        for (int i = 0; i < MAX_FILA_TABLERO; i++) {
+            for (int j = 0; j < MAX_COLUMNA_TABLERO; j++) {
+                tablero[i][j] = caracter;
+            }
+        }
+    }
 
+    private static void asignarPersonajesencasillaLibre(char caracter, int numrepeticiones){
+        Random aleatorio = new Random();
+        int FilaAleatorio;
+        int columnaAleatorio;
+        for (int i = 0; i < numrepeticiones; i++) {
+            do {
+                FilaAleatorio = aleatorio.nextInt(MAX_FILA_TABLERO);
+                columnaAleatorio = aleatorio.nextInt(MAX_COLUMNA_TABLERO);
+            }while (tablero[FilaAleatorio][columnaAleatorio]!='-');
+            tablero[FilaAleatorio][columnaAleatorio] = caracter;
+        }
+            
+        }
     public static void main(String[] args) {
         //1º) Inicializo mi matriz tablero
         tablero = new char[MAX_FILA_TABLERO][MAX_COLUMNA_TABLERO];
 
-        //2º) Rellenar el tablero de caracter "L"
-        for (int i = 0; i < MAX_FILA_TABLERO; i++) {
-            for (int j = 0; j < MAX_COLUMNA_TABLERO; j++) {
-                tablero[i][j] = '-';
-            }
-        }
+        //2º) Asignar casillas libres
+        asignarcasillasLibres('-');
 
         //3º) Asignar a Bart
-        Random aleatorio = new Random();
-        int FilaAleatorio = aleatorio.nextInt(MAX_FILA_TABLERO);
-        int columnaAleatorio = aleatorio.nextInt(MAX_COLUMNA_TABLERO);
-        //fin
+        asignarPersonajesencasillaLibre('B',1);
 
-        tablero[FilaAleatorio][columnaAleatorio] = 'B';
+        //4º) Asignar 10 hommers
+        asignarPersonajesencasillaLibre('H',10);
 
+        //5º) Repartir 10 MUROS dentro del tablero
+        asignarPersonajesencasillaLibre('M', 10);
 
-        //4º)Repartir 10 HOMMER dentro del tablero
-        int FilaAleatorioHommer;
-        int columnaAleatorioHommer;
-        for (int i = 0; i < 10; i++) {
-            do {
-                FilaAleatorioHommer = aleatorio.nextInt(MAX_FILA_TABLERO);
-                columnaAleatorioHommer = aleatorio.nextInt(MAX_COLUMNA_TABLERO);
-            }while (tablero[FilaAleatorioHommer][columnaAleatorioHommer]!='-');
-            tablero[FilaAleatorioHommer][columnaAleatorioHommer] = 'H';
-        }
-        //4º)Repartir 10 MUROS dentro del tablero
-        int FilaAleatorioMuro;
-        int columnaAleatorioMuro;
-        for (int i = 0; i < 10; i++) {
-            do {
-                FilaAleatorioMuro = aleatorio.nextInt(MAX_FILA_TABLERO);
-                columnaAleatorioMuro = aleatorio.nextInt(MAX_COLUMNA_TABLERO);
-            }while (tablero[FilaAleatorioMuro][columnaAleatorioMuro]!='-');
-            tablero[FilaAleatorioMuro][columnaAleatorioMuro] = 'M';
-        }
-
+        //6º) Casilla Final
         tablero[MAX_FILA_TABLERO-1] [MAX_COLUMNA_TABLERO -1] = 'F';
-        //5ºImprimirtablero;
+
+        //7ºImprimirtablero;
         imprimirtablero();
 
        
