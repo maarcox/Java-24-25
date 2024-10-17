@@ -1,6 +1,4 @@
-import javax.swing.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -46,7 +44,6 @@ public class Simpson {
         }
     }
     //Marcos PAniego López
-    //Lo que vamos a hacer es crear una ventana para que registre los movimientos de las letras
 
     public static void main(String[] args) {
         //Juego Simpson
