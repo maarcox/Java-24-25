@@ -38,14 +38,16 @@ public class Main {
     public static void main(String[] args) {
         ListaDePalabras();
         String block = "MELON";
+        int posicion = 0;
         boolean TrueoFalse = true;
         for(int i = 0; i < palabras.length; i++){
             if (palabras[i] == block){
+                posicion = i;
                 TrueoFalse = false;
             }
         }
         if(TrueoFalse == false){
-            System.out.println("La palabra "+ block +" esta dentro de la lista");
+            System.out.println("La palabra "+ block +" esta dentro de la lista y tiene "+palabras[posicion].length()+ " Letras");
         }else{
             System.out.println("La palabra "+ block +" no esta en la lista");
         }
