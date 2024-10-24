@@ -13,7 +13,7 @@ public class Main {
 
 
 
-    private static void InicializarTableroN(){
+    private static void inicializarTableroN(){
         Random aleatorio = new Random();
         for (int i = 0; i < filaTablero; i++) {
             for (int j = 0; j < columnaTablero; j++) {
@@ -34,7 +34,7 @@ public class Main {
     //uno lo relleno con numeros aleatorios del 10 al 99
     //otro relleno con x
     private static String tableroX [][];
-    private static void InicializarTableroX(){
+    private static void inicializarTableroX(){
         for (int i = 0; i < filaTablero; i++) {
             for (int j = 0; j < columnaTablero; j++) {
                 tableroX[i][j] = "xx";
@@ -42,7 +42,7 @@ public class Main {
         }
     }
 
-    private static void ImprimirTableroX(){
+    private static void imprimirTableroX(){
         for (int i = 0; i < filaTablero; i++) {
             for (int j = 0; j < columnaTablero; j++) {
                 System.out.print(tableroX[i][j]+ " ");
@@ -77,16 +77,14 @@ public class Main {
     public static void main(String[] args) {
         tableroN = new String[filaTablero][columnaTablero];
         tableroX = new String[filaTablero][columnaTablero];
-        InicializarTableroN();
+        inicializarTableroN();
         imprimirTableroN();
         System.out.println();
-        InicializarTableroX();
-        ImprimirTableroX();
-
+        inicializarTableroX();
+        imprimirTableroX();
         do {
             leerNumUsario();
-            ImprimirTableroX();
-
+            imprimirTableroX();
         }while(boleano == false);
         //final
     }
