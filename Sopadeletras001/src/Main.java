@@ -129,11 +129,13 @@ public class Main {
         cargarPalabrasHorizontal("JAVA");
         //rellenarTableroletras();
         rellenarTableroletras();
-        mostrarTableroCasillas();
+
 
 
         Boolean bucle = true;
         while (bucle) {
+            System.out.println("");
+            mostrarTableroCasillas();
             Scanner lector = new Scanner(System.in);
             String leerpalabra = lector.nextLine();
             Boolean correcto = true;
