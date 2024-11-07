@@ -67,10 +67,8 @@ public class Main {
                 colocada = true;
                 break; // Salimos del bucle, ya hemos colocado la palabra
             }
-            
             intentos++;
         }
-
     }
 
     private static boolean cargarPalabraVertical(String palabra) {
