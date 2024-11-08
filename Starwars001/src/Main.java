@@ -9,8 +9,13 @@ public class Main {
     private static int filaYoda;
     private static int columnaYoda;
 
+
+    public static int vidasjugador1 = 3;
+
     private static int filaDarthVader;
     private static int  columnaDarthVader;
+    public static int vidasjugador2 = 3;
+
     private static void inicializarTablersCasillasLibres() {
         for (int i = 0; i < filaTablero; i++) {
             for (int j = 0; j < columnaTablero; j++) {
@@ -87,8 +92,194 @@ public class Main {
         tableroJuego2[filaTablero-1][columnaTablero-1] = 'F'; //Añadiremos una casilla final para ganar tablero 2
         mostrarTableros();
 
+        Scanner lector = new Scanner(System.in);
+        boolean vidas = true;
+        do {
+            System.out.println("Jugador 1");
+            System.out.println("Escriba es desplazamiento que deseas hacer(ADWS)");
+            String desplazamiento1 = lector.nextLine();
+            switch (desplazamiento1){
+                case "A", "a": //izquierda
+                    if ((columnaYoda -1 )>=0){
+                        columnaYoda = columnaYoda -1;
+                        switch (tableroJuego1[filaYoda][columnaYoda]){
+                            case 'D':
+                                vidasjugador1 = vidasjugador1 - 1;
+                                System.out.println("Te quedan " + vidasjugador1 + " vidas");
+                                tableroJuego1[filaYoda][columnaYoda] = 'Y';
+                                tableroJuego1[filaYoda][columnaYoda + 1] = 'L';
+                            case 'M':
+                                System.out.println("El muro no te deja Desplazarte a esta casilla");
+                                break;
+                            case 'L':
+                                tableroJuego1[filaYoda][columnaYoda] = 'Y';
+                                tableroJuego1[filaYoda][columnaYoda + 1] = 'L';
+                        }
+                    }else{
+                        System.out.println("Desplazamiento prohibido");
+                    }
+                    break;
+                case "D","d" : //Derecha
+                    if ((columnaYoda +1 )>=0){
+                        columnaYoda= columnaYoda +1;
+                        switch (tableroJuego1[filaYoda][columnaYoda]){
+                            case 'D':
+                                vidasjugador1 = vidasjugador1 - 1;
+                                System.out.println("Te quedan " + vidasjugador1+ " vidas");
+                                tableroJuego1[filaYoda][columnaYoda] = 'Y';
+                                tableroJuego1[filaYoda][columnaYoda - 1] = 'L';
+                            case 'M':
+                                System.out.println("El muro no te deja Desplazarte a esta casilla");
+                                break;
+                            case 'L':
+                                tableroJuego1[filaYoda][columnaYoda] = 'Y';
+                                tableroJuego1[filaYoda][columnaYoda - 1] = 'L';
+                        }
+                    }else{
+                        System.out.println("Desplazamiento prohibido");
+                    }
+                    break;
+                case "S", "s" : //Abajo
+                    if ((filaYoda +1 )>=0){
+                        filaYoda = filaYoda + 1;
+                        switch (tableroJuego1[filaYoda][columnaYoda]){
+                            case 'D':
+                                vidasjugador1 = vidasjugador1 - 1;
+                                System.out.println("Te quedan " + vidasjugador1 + " vidas");
+                                tableroJuego1[filaYoda][columnaYoda] = 'Y';
+                                tableroJuego1[filaYoda -1][columnaYoda] = 'L';
+                            case 'M':
+                                System.out.println("El muro no te deja Desplazarte a esta casilla");
+                                break;
+                            case 'L':
+                                tableroJuego1[filaYoda][columnaYoda] = 'Y';
+                                tableroJuego1[filaYoda -1][columnaYoda] = 'L';
+                        }
+                    }else{
+                        System.out.println("Desplazamiento prohibido");
+                    }
+                    break;
+                case "W", "w" : //Arriba
+                    if ((filaYoda -1 )>=0){
+                        filaYoda = filaYoda - 1;
+                        switch (tableroJuego1[filaYoda][columnaYoda]){
+                            case 'D':
+                                vidasjugador1 = vidasjugador1 - 1;
+                                System.out.println("Te quedan " + vidasjugador1 + " vidas");
+                                tableroJuego1[filaYoda][columnaYoda] = 'Y';
+                                tableroJuego1[filaYoda + 1][columnaYoda ] = 'L';
+                            case 'M':
+                                System.out.println("El muro no te deja Desplazarte a esta casilla");
+                                break;
+                            case 'L':
+                                tableroJuego1[filaYoda][columnaYoda] = 'Y';
+                                tableroJuego1[filaYoda +1][columnaYoda] = 'L';
+                        }
+                    }else{
+                        System.out.println("Desplazamiento prohibido");
+                    }
+                    break;
+            }
+            mostrarTableros();
+            System.out.println("Jugador 2");
+            System.out.println("Escriba es desplazamiento que deseas hacer(ADWS)");
+            String desplazamiento2 = lector.nextLine();
+            switch (desplazamiento2){
+                case "A", "a": //izquierda
+                    if ((columnaDarthVader -1 )>=0){
+                        columnaDarthVader = columnaDarthVader -1;
+                        switch (tableroJuego2[filaDarthVader][columnaDarthVader]){
+                            case 'D':
+                                vidasjugador2 = vidasjugador2 - 1;
+                                System.out.println("Te quedan " + vidasjugador2 + " vidas");
+                                tableroJuego2[filaDarthVader][columnaDarthVader] = 'V';
+                                tableroJuego2[filaDarthVader][columnaDarthVader + 1] = 'L';
+                            case 'M':
+                                System.out.println("El muro no te deja Desplazarte a esta casilla");
+                                break;
+                            case 'L':
+                                tableroJuego2[filaDarthVader][columnaDarthVader] = 'V';
+                                tableroJuego2[filaDarthVader][columnaDarthVader + 1] = 'L';
+                        }
+                    }else{
+                        System.out.println("Desplazamiento prohibido");
+                    }
+                    break;
+                case "D","d" : //Derecha
+                    if ((columnaDarthVader +1 )>=0){
+                        columnaDarthVader= columnaDarthVader +1;
+                        switch (tableroJuego2[filaDarthVader][columnaDarthVader]){
+                            case 'D':
+                                vidasjugador2 = vidasjugador2 - 1;
+                                System.out.println("Te quedan " + vidasjugador2+ " vidas");
+                                tableroJuego2[filaDarthVader][columnaDarthVader] = 'V';
+                                tableroJuego2[filaDarthVader][columnaDarthVader - 1] = 'L';
+                            case 'M':
+                                System.out.println("El muro no te deja Desplazarte a esta casilla");
+                                break;
+                            case 'L':
+                                tableroJuego2[filaDarthVader][columnaDarthVader] = 'V';
+                                tableroJuego2[filaDarthVader][columnaDarthVader - 1] = 'L';
+                        }
+                    }else{
+                        System.out.println("Desplazamiento prohibido");
+                    }
+                    break;
+                case "S", "s" : //Abajo
+                    if ((filaDarthVader +1 )>=0){
+                        filaDarthVader = filaDarthVader + 1;
+                        switch (tableroJuego2[filaDarthVader][columnaDarthVader]){
+                            case 'D':
+                                vidasjugador2 = vidasjugador2 - 1;
+                                System.out.println("Te quedan " + vidasjugador2 + " vidas");
+                                tableroJuego2[filaDarthVader][columnaDarthVader] = 'V';
+                                tableroJuego2[filaDarthVader -1][columnaDarthVader] = 'L';
+                            case 'M':
+                                System.out.println("El muro no te deja Desplazarte a esta casilla");
+                                break;
+                            case 'L':
+                                tableroJuego2[filaDarthVader][columnaDarthVader] = 'V';
+                                tableroJuego2[filaDarthVader -1][columnaDarthVader] = 'L';
+                        }
+                    }else{
+                        System.out.println("Desplazamiento prohibido");
+                    }
+                    break;
+                case "W", "w" : //Arriba
+                    if ((filaDarthVader -1 )>=0){
+                        filaDarthVader = filaDarthVader - 1;
+                        switch (tableroJuego2[filaDarthVader][columnaDarthVader]){
+                            case 'D':
+                                vidasjugador2 = vidasjugador2 - 1;
+                                System.out.println("Te quedan " + vidasjugador2 + " vidas");
+                                tableroJuego2[filaDarthVader][columnaDarthVader] = 'V';
+                                tableroJuego2[filaDarthVader + 1][columnaDarthVader ] = 'L';
+                            case 'M':
+                                System.out.println("El muro no te deja Desplazarte a esta casilla");
+                                break;
+                            case 'L':
+                                tableroJuego2[filaDarthVader][columnaDarthVader] = 'V';
+                                tableroJuego2[filaDarthVader +1][columnaDarthVader] = 'L';
+                        }
+                    }else{
+                        System.out.println("Desplazamiento prohibido");
+                    }
+                    break;
+            }
+            mostrarTableros();
 
-        
+            if (vidasjugador1 <= 0 || vidasjugador2 <= 0){
+                vidas = false;
+            }
+        } while (vidas);
+
+        if (vidasjugador1 <= 0 ){
+            System.out.println("Jugador 1 PERDISTE");
+        } else if (vidasjugador2 <= 0) {
+            System.out.println("Jugador 2 PERDISTE");
+        }
+
+
         //3 vidas cada jugador se desceunta cuando choca con un D o R
         //Pierde antes el jugador que pierda 3 vidas
         //Gana el primero que llegue casilla final
