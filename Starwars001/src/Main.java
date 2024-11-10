@@ -98,6 +98,9 @@ public class Main {
             System.out.println("Jugador 1");
             System.out.println("Escriba es desplazamiento que deseas hacer(ADWS)");
             String desplazamiento1 = lector.nextLine();
+            int numero;
+
+
             switch (desplazamiento1){
                 case "A", "a": //izquierda
                     if ((columnaYoda -1 )>=0){
@@ -120,7 +123,7 @@ public class Main {
                     }
                     break;
                 case "D","d" : //Derecha
-                    if ((columnaYoda +1 )>=0){
+                    if ((columnaYoda +1 )>=0 && (columnaYoda + 1 )<=9){
                         columnaYoda= columnaYoda +1;
                         switch (tableroJuego1[filaYoda][columnaYoda]){
                             case 'D':
