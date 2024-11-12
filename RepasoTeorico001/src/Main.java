@@ -20,15 +20,15 @@ public class Main {
             for (int i = 0; i < matriz.length - 1; i++) {
                 for (int j = i + 1; j < matriz.length; j++) {
                     if (matriz[i][col] > matriz[j][col]) {
-                        int temp = matriz[i][col];
+                        int ordenar = matriz[i][col];
                         matriz[i][col] = matriz[j][col];
-                        matriz[j][col] = temp;
+                        matriz[j][col] = ordenar;
                     }
                 }
             }
         }
     }
-    
+
     private static void imprimirmatriz() {
         // Imprimir la matriz
         for (int row = 0; row < matriz.length; row++) {
