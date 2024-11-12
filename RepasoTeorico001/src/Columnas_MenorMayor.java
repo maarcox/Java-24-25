@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Main {
+public class Columnas_MenorMayor {
     private static int[][] matriz = new int[3][9];
 
     private static void rellenarColumnasDependiendoRango() {
