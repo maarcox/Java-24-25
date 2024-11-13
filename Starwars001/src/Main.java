@@ -16,6 +16,9 @@ public class Main {
     private static int  columnaDarthVader;
     public static int vidasjugador2 = 3;
 
+    private static int filaPocima;
+    private static int columnaPocima;
+
     private static void inicializarTablersCasillasLibres() {
         for (int i = 0; i < filaTablero; i++) {
             for (int j = 0; j < columnaTablero; j++) {
@@ -85,9 +88,11 @@ public class Main {
         asignarPersonajesEnCasillasLibresTablero1('Y', 1);
         asignarPersonajesEnCasillasLibresTablero1('M', 5);
         asignarPersonajesEnCasillasLibresTablero1('D', 5);
+        asignarPersonajesEnCasillasLibresTablero1('P', 5);
         asignarPersonajesEnCasillasLibresTablero2('V', 1);
         asignarPersonajesEnCasillasLibresTablero2('M', 5);
         asignarPersonajesEnCasillasLibresTablero2('R', 5);
+        asignarPersonajesEnCasillasLibresTablero2('P', 5);
         tableroJuego1[filaTablero-1][columnaTablero-1] = 'F'; //Añadiremos una casilla final para ganar tablero 1
         tableroJuego2[filaTablero-1][columnaTablero-1] = 'F'; //Añadiremos una casilla final para ganar tablero 2
         mostrarTableros();
@@ -114,6 +119,16 @@ public class Main {
                             case 'M':
                                 System.out.println("El muro no te deja Desplazarte a esta casilla");
                                 break;
+                            case 'P':
+                                tableroJuego1[filaYoda][columnaYoda] = 'L';
+                                tableroJuego1[filaYoda][columnaYoda + 1] = 'L';
+                                do {
+                                    System.out.println("Elija la fila a la que deseas desplazarte");
+                                    filaPocima = lector.nextInt();
+                                    System.out.println("Elija la columna a la que deseas desplazarte");
+                                    columnaPocima = lector.nextInt();
+                                }while (tableroJuego1[filaPocima][columnaPocima] != 'L');
+                                tableroJuego1[filaPocima][columnaPocima] = 'Y';
                             case 'L':
                                 tableroJuego1[filaYoda][columnaYoda] = 'Y';
                                 tableroJuego1[filaYoda][columnaYoda + 1] = 'L';
@@ -134,6 +149,16 @@ public class Main {
                             case 'M':
                                 System.out.println("El muro no te deja Desplazarte a esta casilla");
                                 break;
+                            case 'P':
+                                tableroJuego1[filaYoda][columnaYoda] = 'L';
+                                tableroJuego1[filaYoda][columnaYoda - 1] = 'L';
+                                do {
+                                    System.out.println("Elija la fila a la que deseas desplazarte");
+                                    filaPocima = lector.nextInt();
+                                    System.out.println("Elija la columna a la que deseas desplazarte");
+                                    columnaPocima = lector.nextInt();
+                                }while (tableroJuego1[filaPocima][columnaPocima] != 'L');
+                                tableroJuego1[filaPocima][columnaPocima] = 'Y';
                             case 'L':
                                 tableroJuego1[filaYoda][columnaYoda] = 'Y';
                                 tableroJuego1[filaYoda][columnaYoda - 1] = 'L';
@@ -154,6 +179,16 @@ public class Main {
                             case 'M':
                                 System.out.println("El muro no te deja Desplazarte a esta casilla");
                                 break;
+                            case 'P':
+                                tableroJuego1[filaYoda][columnaYoda] = 'L';
+                                tableroJuego1[filaYoda -1][columnaYoda ] = 'L';
+                                do {
+                                    System.out.println("Elija la fila a la que deseas desplazarte");
+                                    filaPocima = lector.nextInt();
+                                    System.out.println("Elija la columna a la que deseas desplazarte");
+                                    columnaPocima = lector.nextInt();
+                                }while (tableroJuego1[filaPocima][columnaPocima] != 'L');
+                                tableroJuego1[filaPocima][columnaPocima] = 'Y';
                             case 'L':
                                 tableroJuego1[filaYoda][columnaYoda] = 'Y';
                                 tableroJuego1[filaYoda -1][columnaYoda] = 'L';
@@ -174,6 +209,16 @@ public class Main {
                             case 'M':
                                 System.out.println("El muro no te deja Desplazarte a esta casilla");
                                 break;
+                            case 'P':
+                                tableroJuego1[filaYoda][columnaYoda] = 'L';
+                                tableroJuego1[filaYoda +1][columnaYoda ] = 'L';
+                                do {
+                                    System.out.println("Elija la fila a la que deseas desplazarte");
+                                    filaPocima = lector.nextInt();
+                                    System.out.println("Elija la columna a la que deseas desplazarte");
+                                    columnaPocima = lector.nextInt();
+                                }while (tableroJuego1[filaPocima][columnaPocima] != 'L');
+                                tableroJuego1[filaPocima][columnaPocima] = 'Y';
                             case 'L':
                                 tableroJuego1[filaYoda][columnaYoda] = 'Y';
                                 tableroJuego1[filaYoda +1][columnaYoda] = 'L';
@@ -200,6 +245,16 @@ public class Main {
                             case 'M':
                                 System.out.println("El muro no te deja Desplazarte a esta casilla");
                                 break;
+                            case 'P':
+                                tableroJuego2[filaDarthVader][columnaDarthVader] = 'L';
+                                tableroJuego2[filaDarthVader][columnaDarthVader + 1] = 'L';
+                                do {
+                                    System.out.println("Elija la fila a la que deseas desplazarte");
+                                    filaPocima = lector.nextInt();
+                                    System.out.println("Elija la columna a la que deseas desplazarte");
+                                    columnaPocima = lector.nextInt();
+                                }while (tableroJuego2[filaPocima][columnaPocima] != 'L');
+                                tableroJuego2[filaPocima][columnaPocima] = 'Y';
                             case 'L':
                                 tableroJuego2[filaDarthVader][columnaDarthVader] = 'V';
                                 tableroJuego2[filaDarthVader][columnaDarthVader + 1] = 'L';
@@ -220,6 +275,16 @@ public class Main {
                             case 'M':
                                 System.out.println("El muro no te deja Desplazarte a esta casilla");
                                 break;
+                            case 'P':
+                                tableroJuego2[filaDarthVader][columnaDarthVader] = 'L';
+                                tableroJuego2[filaDarthVader][columnaDarthVader - 1] = 'L';
+                                do {
+                                    System.out.println("Elija la fila a la que deseas desplazarte");
+                                    filaPocima = lector.nextInt();
+                                    System.out.println("Elija la columna a la que deseas desplazarte");
+                                    columnaPocima = lector.nextInt();
+                                }while (tableroJuego2[filaPocima][columnaPocima] != 'L');
+                                tableroJuego2[filaPocima][columnaPocima] = 'Y';
                             case 'L':
                                 tableroJuego2[filaDarthVader][columnaDarthVader] = 'V';
                                 tableroJuego2[filaDarthVader][columnaDarthVader - 1] = 'L';
@@ -240,6 +305,16 @@ public class Main {
                             case 'M':
                                 System.out.println("El muro no te deja Desplazarte a esta casilla");
                                 break;
+                            case 'P':
+                                tableroJuego2[filaDarthVader][columnaDarthVader] = 'L';
+                                tableroJuego2[filaDarthVader -1][columnaDarthVader] = 'L';
+                                do {
+                                    System.out.println("Elija la fila a la que deseas desplazarte");
+                                    filaPocima = lector.nextInt();
+                                    System.out.println("Elija la columna a la que deseas desplazarte");
+                                    columnaPocima = lector.nextInt();
+                                }while (tableroJuego2[filaPocima][columnaPocima] != 'L');
+                                tableroJuego2[filaPocima][columnaPocima] = 'Y';
                             case 'L':
                                 tableroJuego2[filaDarthVader][columnaDarthVader] = 'V';
                                 tableroJuego2[filaDarthVader -1][columnaDarthVader] = 'L';
@@ -260,6 +335,16 @@ public class Main {
                             case 'M':
                                 System.out.println("El muro no te deja Desplazarte a esta casilla");
                                 break;
+                            case 'P':
+                                tableroJuego2[filaDarthVader][columnaDarthVader] = 'L';
+                                tableroJuego2[filaDarthVader +1][columnaDarthVader] = 'L';
+                                do {
+                                    System.out.println("Elija la fila a la que deseas desplazarte");
+                                    filaPocima = lector.nextInt();
+                                    System.out.println("Elija la columna a la que deseas desplazarte");
+                                    columnaPocima = lector.nextInt();
+                                }while (tableroJuego2[filaPocima][columnaPocima] != 'L');
+                                tableroJuego2[filaPocima][columnaPocima] = 'Y';
                             case 'L':
                                 tableroJuego2[filaDarthVader][columnaDarthVader] = 'V';
                                 tableroJuego2[filaDarthVader +1][columnaDarthVader] = 'L';
