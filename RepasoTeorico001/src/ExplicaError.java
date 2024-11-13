@@ -8,6 +8,6 @@ public class ExplicaError {
         System.out.println("Elemento en la posición (2,2): " + matriz[1][2]);
         //Este error se debe a que estas intentando acceder
         //a un indice que no existe dentro de la matriz, que
-        // esta fuera de rangos 
+        // esta fuera de rangos
     }
 }
