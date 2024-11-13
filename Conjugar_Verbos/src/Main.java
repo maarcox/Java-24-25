@@ -23,7 +23,10 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        while (true){
+        boolean bucle = true;
+        while (bucle){
+            System.out.println(" ");
+            System.out.print("Introduce un verbo y (a,b,c): ");
             String verbo = sc.nextLine();
             switch (verbo){
                 case "Saltar A", "saltar a", "SALTAR A":
@@ -41,8 +44,46 @@ public class Main {
                         System.out.println(pronombres[i] + " " +  presente[i + 12]);
                     }
                     break;
-            }
+                case "Saltar B", "saltar b", "SALTAR B":
+                    for (int i = 0; i < pronombres.length; i++) {
+                        System.out.println(pronombres[i] + " " +  preteritoPerfectoSimple[i]);
+                    }
+                    break;
+                case "Comer B", "comer b", "COMER B":
+                    for (int i = 0; i < pronombres.length; i++) {
+                        System.out.println(pronombres[i] + " " +  preteritoPerfectoSimple[i + 6]);
+                    }
+                    break;
+                case "Vivir B", "vivir b", "VIVIR B":
+                    for (int i = 0; i < pronombres.length; i++) {
+                        System.out.println(pronombres[i] + " " +  preteritoPerfectoSimple[i + 12]);
+                    }
+                    break;
+                case "Saltar C", "saltar c", "SALTAR C":
+                    for (int i = 0; i < pronombres.length; i++) {
+                        System.out.println(pronombres[i] + " " +  futuro[i]);
+                    }
+                    break;
+                case "Comer C", "comer c", "COMER C":
+                    for (int i = 0; i < pronombres.length; i++) {
+                        System.out.println(pronombres[i] + " " +  futuro[i + 6]);
+                    }
+                    break;
+                case "Vivir C", "vivir c", "VIVIR C":
+                    for (int i = 0; i < pronombres.length; i++) {
+                        System.out.println(pronombres[i] + " " +  futuro[i + 12]);
+                    }
+                    break;
 
+                default:
+                    System.out.println(" ");
+                    System.out.println("Verbos disponibles: Saltar, Comer y Vivir");
+                    break;
+                case "0":
+                    bucle = false;
+                    break;
+
+            }
         }
     }
 }
