@@ -67,6 +67,23 @@ public class Main {
         }
     }
 
+    private static void moverMalosTablero1Aleatoriamente(){
+        for (int i = 0; i < filaTablero; i++) {
+            for (int j = 0; j < columnaTablero; j++) {
+                if (tablero1[i][j] == 'D'){
+                    tablero1[i][j] = 'L';
+                }
+            }
+        }
+        for (int i = 0; i < 5 ; i++) {
+            do {
+                filaAleatorio = aleatorio.nextInt(10);
+                columnaaleatorio = aleatorio.nextInt(10);
+            }while (tablero1[filaAleatorio][columnaaleatorio] != 'L');
+            tablero1[filaAleatorio][columnaaleatorio] = 'D';
+        }
+    }
+
     private static int vidasJugador1 = 3;
     private static int vidasJugador2 = 3;
 
@@ -85,16 +102,33 @@ public class Main {
 
 
         Scanner lector = new Scanner(System.in);
-
+        int contador = 0; //por si necesitamos en un futuro
+        boolean fin = true;
     do{
+        moverMalosTablero1Aleatoriamente();
         imprimirTablero1();
         String movimientos = lector.nextLine();
         switch (movimientos){
+
             case "A", "a":
                 if ((columnaYoda -1)>=0){
                     columnaYoda = columnaYoda -1;
-                    tablero1[filaYoda][columnaYoda +1 ] = 'L';
-                    tablero1[filaYoda][columnaYoda] = 'Y';
+                    switch (tablero1[filaYoda][columnaYoda]){
+                        case 'M':
+                            columnaYoda = columnaYoda +1;
+                            System.out.println("Desplazamiento invalido");
+                            break;
+                        case 'L':
+                            tablero1[filaYoda][columnaYoda +1 ] = 'L';
+                            tablero1[filaYoda][columnaYoda] = 'Y';
+                            break;
+                        case 'D':
+                            vidasJugador1 = vidasJugador1 -1;
+                            tablero1[filaYoda][columnaYoda +1 ] = 'L';
+                            tablero1[filaYoda][columnaYoda] = 'Y';
+                            System.out.println("Te quedan: " + vidasJugador1 + " vidas");
+                            break;
+                    }
                 }
                 break;
             case "D", "d":
@@ -114,9 +148,25 @@ public class Main {
             case "S", "s":
                 if ((filaYoda + 1)<10){
                     filaYoda = filaYoda +1;
-                    tablero1[filaYoda -1][columnaYoda] = 'L';
-                    tablero1[filaYoda][columnaYoda] = 'Y';
-
+                    switch (tablero1[filaYoda][columnaYoda]){
+                        case 'M':
+                            filaYoda = filaYoda - 1;
+                            System.out.println("Desplazamiento invalido");
+                            break;
+                        case 'L':
+                            tablero1[filaYoda -1][columnaYoda] = 'L';
+                            tablero1[filaYoda][columnaYoda] = 'Y';
+                            break;
+                        case 'D':
+                            vidasJugador1 = vidasJugador1 -1;
+                            tablero1[filaYoda -1][columnaYoda] = 'L';
+                            tablero1[filaYoda][columnaYoda] = 'Y';
+                            System.out.println("Te quedan: " + vidasJugador1 + " vidas");
+                            break;
+                        case 'F':
+                            fin = false;
+                            break;
+                    }
                 }
                 break;
             case "Q", "q":
@@ -153,11 +203,14 @@ public class Main {
                 break;
         }
 
-    }while (vidasJugador1 > 0 && vidasJugador2 > 0);
+    }while (vidasJugador1 > 0 && vidasJugador2 > 0 &&  fin);
     if (vidasJugador1 == 0 ){
         System.out.println("Jugador 1 Has perdido");
     } else if (vidasJugador2 == 0) {
         System.out.println("Jugador 2 Has perdido");
+    }
+    if (!fin){
+        System.out.println("Jugador 1 Has Ganado");
     }
     }
 }
