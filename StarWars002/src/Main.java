@@ -104,9 +104,16 @@ public class Main {
         Scanner lector = new Scanner(System.in);
         int contador = 0; //por si necesitamos en un futuro
         boolean fin = true;
+        int jugador1Win = 0;
+        int jugador2Win = 0;
     do{
         moverMalosTablero1Aleatoriamente();
+        System.out.println("Tablero YODA");
         imprimirTablero1();
+        System.out.println(" ");
+        System.out.println("Tablero Dark Vader");
+        imprimirTablero2();
+
         String movimientos = lector.nextLine();
         switch (movimientos){
 
@@ -134,15 +141,47 @@ public class Main {
             case "D", "d":
                 if((columnaYoda + 1)<10){
                     columnaYoda = columnaYoda +1;
-                    tablero1[filaYoda][columnaYoda -1] = 'L';
-                    tablero1[filaYoda][columnaYoda] = 'Y';
+                    switch (tablero1[filaYoda][columnaYoda]){
+                        case 'M':
+                            columnaYoda = columnaYoda -1;
+                            System.out.println("Desplazamiento invalido");
+                            break;
+                        case 'L':
+                            tablero1[filaYoda][columnaYoda -1] = 'L';
+                            tablero1[filaYoda][columnaYoda] = 'Y';
+                            break;
+                        case 'D':
+                            vidasJugador1 = vidasJugador1 -1;
+                            tablero1[filaYoda][columnaYoda -1] = 'L';
+                            tablero1[filaYoda][columnaYoda] = 'Y';
+                            System.out.println("Te quedan: " + vidasJugador1 + " vidas");
+                            break;
+                        case 'F':
+                            jugador1Win = 2;
+                            fin = false;
+                            break;
+                    }
                 }
                 break;
             case "W", "w":
                 if ((filaYoda - 1)>= 0){
                     filaYoda = filaYoda -1;
-                    tablero1[filaYoda +1][columnaYoda] = 'L';
-                    tablero1[filaYoda][columnaYoda] = 'Y';
+                    switch (tablero1[filaYoda][columnaYoda]){
+                        case 'M':
+                            filaYoda = filaYoda + 1;
+                            System.out.println("Desplazamiento invalido");
+                            break;
+                        case 'L':
+                            tablero1[filaYoda +1][columnaYoda] = 'L';
+                            tablero1[filaYoda][columnaYoda] = 'Y';
+                            break;
+                        case 'D':
+                            vidasJugador1 = vidasJugador1 -1;
+                            tablero1[filaYoda +1][columnaYoda] = 'L';
+                            tablero1[filaYoda][columnaYoda] = 'Y';
+                            System.out.println("Te quedan: " + vidasJugador1 + " vidas");
+                            break;
+                    }
                 }
                 break;
             case "S", "s":
@@ -164,6 +203,7 @@ public class Main {
                             System.out.println("Te quedan: " + vidasJugador1 + " vidas");
                             break;
                         case 'F':
+                            jugador1Win = 2;
                             fin = false;
                             break;
                     }
@@ -173,44 +213,111 @@ public class Main {
                 if ((filaYoda -1) >=0 && (columnaYoda-1)>=0){
                     filaYoda = filaYoda -1;
                     columnaYoda = columnaYoda -1;
-                    tablero1[filaYoda +1][columnaYoda+1] = 'L';
-                    tablero1[filaYoda][columnaYoda] = 'Y';
+                    switch (tablero1[filaYoda][columnaYoda]){
+                        case 'M':
+                            filaYoda = filaYoda +1;
+                            columnaYoda = columnaYoda +1;
+                            System.out.println("Desplazamiento invalido");
+                            break;
+                        case 'L':
+                            tablero1[filaYoda +1][columnaYoda+1] = 'L';
+                            tablero1[filaYoda][columnaYoda] = 'Y';
+                            break;
+                        case 'D':
+                            vidasJugador1 = vidasJugador1 -1;
+                            tablero1[filaYoda +1][columnaYoda+1] = 'L';
+                            tablero1[filaYoda][columnaYoda] = 'Y';
+                            System.out.println("Te quedan: " + vidasJugador1 + " vidas");
+                            break;
+                    }
                 }
                 break;
             case "E", "e":
                 if((filaYoda-1)>=0 && (columnaYoda+1) <10){
                     filaYoda = filaYoda -1;
                     columnaYoda = columnaYoda +1;
-                    tablero1[filaYoda +1][columnaYoda-1] = 'L';
-                    tablero1[filaYoda][columnaYoda] = 'Y';
+                    switch (tablero1[filaYoda][columnaYoda]){
+                        case 'M':
+                            filaYoda = filaYoda +1;
+                            columnaYoda = columnaYoda -1;
+                            System.out.println("Desplazamiento invalido");
+                            break;
+                        case 'L':
+                            tablero1[filaYoda +1][columnaYoda-1] = 'L';
+                            tablero1[filaYoda][columnaYoda] = 'Y';
+                            break;
+                        case 'D':
+                            vidasJugador1 = vidasJugador1 -1;
+                            tablero1[filaYoda +1][columnaYoda-1] = 'L';
+                            tablero1[filaYoda][columnaYoda] = 'Y';
+                            System.out.println("Te quedan: " + vidasJugador1 + " vidas");
+                            break;
+                    }
                 }
                 break;
             case "Z", "z":
                 if((filaYoda + 1)< 10 && (columnaYoda-1)>=0){
                     filaYoda = filaYoda +1;
                     columnaYoda = columnaYoda -1;
-                    tablero1[filaYoda -1][columnaYoda +1] = 'L';
-                    tablero1[filaYoda][columnaYoda] = 'Y';
+                    switch (tablero1[filaYoda][columnaYoda]){
+                        case 'M':
+                            filaYoda = filaYoda -1;
+                            columnaYoda = columnaYoda +1;
+                            System.out.println("Desplazamiento invalido");
+                            break;
+                        case 'L':
+                            tablero1[filaYoda -1][columnaYoda +1] = 'L';
+                            tablero1[filaYoda][columnaYoda] = 'Y';
+                            break;
+                        case 'D':
+                            vidasJugador1 = vidasJugador1 -1;
+                            tablero1[filaYoda -1][columnaYoda +1] = 'L';
+                            tablero1[filaYoda][columnaYoda] = 'Y';
+                            System.out.println("Te quedan: " + vidasJugador1 + " vidas");
+                            break;
+                    }
                 }
                 break;
             case "C", "c":
                 if ((filaYoda +1) <10 && (columnaYoda+1)<10){
                     filaYoda = filaYoda +1;
                     columnaYoda = columnaYoda +1;
-                    tablero1[filaYoda -1][columnaYoda-1] = 'L';
-                    tablero1[filaYoda][columnaYoda] = 'Y';
+                    switch (tablero1[filaYoda][columnaYoda]){
+                        case 'M':
+                            filaYoda = filaYoda -1;
+                            columnaYoda = columnaYoda -1;
+                            System.out.println("Desplazamiento invalido");
+                            break;
+                        case 'L':
+                            tablero1[filaYoda -1][columnaYoda-1] = 'L';
+                            tablero1[filaYoda][columnaYoda] = 'Y';
+                            break;
+                        case 'D':
+                            vidasJugador1 = vidasJugador1 -1;
+                            tablero1[filaYoda -1][columnaYoda-1] = 'L';
+                            tablero1[filaYoda][columnaYoda] = 'Y';
+                            System.out.println("Te quedan: " + vidasJugador1 + " vidas");
+                            break;
+                        case 'F':
+                            jugador1Win = 2;
+                            fin = false;
+                            break;
+                    }
                 }
                 break;
         }
-
     }while (vidasJugador1 > 0 && vidasJugador2 > 0 &&  fin);
     if (vidasJugador1 == 0 ){
-        System.out.println("Jugador 1 Has perdido");
+        System.out.println("Jugador YODA Has perdido");
+        System.out.println("Jugador DARK VADER Has Ganado");
     } else if (vidasJugador2 == 0) {
-        System.out.println("Jugador 2 Has perdido");
+        System.out.println("Jugador DARK VADER Has perdido");
+        System.out.println("Jugador YODA Has Ganado");
     }
-    if (!fin){
-        System.out.println("Jugador 1 Has Ganado");
+    if (jugador1Win == 2){
+        System.out.println("Jugador YODA Has Ganado");
+    } else if (jugador2Win == 2) {
+        System.out.println("Jugador DARK VADER Has Ganado");
     }
     }
 }
