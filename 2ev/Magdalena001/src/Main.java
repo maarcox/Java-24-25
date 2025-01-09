@@ -15,10 +15,10 @@ public class Main {
         listaMagdalenas[1] = magdalena; */
         System.out.println(("--------------------------------------"));
         String [] listaMagdalenas = new String[4];
-        Magdalena magdalena1 = new Magdalena("chocolate");
-        Magdalena magdalena2 = new Magdalena("Vainilla");
-        Magdalena magdalena3 = new Magdalena("Platano");
-        Magdalena magdalena4 = new Magdalena("Naranja");
+        Magdalena magdalena1 = new Magdalena("1 chocolate");
+        Magdalena magdalena2 = new Magdalena("2 Vainilla");
+        Magdalena magdalena3 = new Magdalena("3 Platano");
+        Magdalena magdalena4 = new Magdalena("4 Naranja");
 
         magdalena1.mostrar();
         magdalena2.mostrar();

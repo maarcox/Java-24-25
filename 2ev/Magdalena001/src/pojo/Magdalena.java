@@ -40,7 +40,7 @@ public class Magdalena {
 
 
     public String mostrar(){
-        System.out.println(listaMagdalenas[0]);
+        System.out.println("Magdalena " + listaMagdalenas[0]);
         return null;
     }
 
