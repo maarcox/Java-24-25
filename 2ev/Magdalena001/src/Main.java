@@ -13,6 +13,8 @@ public class Main {
         /* Magdalena[] listaMagdalenas = new Magdalena[10]; //Almacenamiento array estatico
         listaMagdalenas[0] = magdalena;
         listaMagdalenas[1] = magdalena; */
+        
+
         System.out.println(("--------------------------------------"));
         String [] listaMagdalenas = new String[4];
         Magdalena magdalena1 = new Magdalena("1 chocolate");
