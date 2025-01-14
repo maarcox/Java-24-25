@@ -32,7 +32,8 @@ public class Inventario {
             nombre = lector.nextLine();
 
 
-            for (Producto producto : lstinventario) {
+            for (int i = 0; i < lstinventario.length; i++) {
+                Producto producto = lstinventario[i];
                 if ( producto.getNombre().equals(nombre)) {
                         System.out.println(producto);
                 }
