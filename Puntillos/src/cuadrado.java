@@ -6,7 +6,7 @@ public class cuadrado extends Figuras{
 
     @Override
     public String toString() {
-        return "Esto es un Cuadrado con lados: " + lados;
+        return "Esto es un Cuadrado con lados: " + "("+ lados + ")";
     }
 
 }

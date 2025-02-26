@@ -7,7 +7,7 @@ public class punto extends Figuras {
     }
     @Override
     public String toString() {
-        return "Esto es un Punto con coordenadas: " + lados;
+        return "Esto es un Punto con coordenadas: " + "(" + lados + ")";
     }
 
 }

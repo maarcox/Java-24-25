@@ -7,6 +7,6 @@ public class triangulo extends Figuras {
 
     @Override
     public String toString() {
-        return "Esto es un Triángulo con lados: " + lados;
+        return "Esto es un Triángulo con lados: " + "(" + lados + ")";
     }
 }
