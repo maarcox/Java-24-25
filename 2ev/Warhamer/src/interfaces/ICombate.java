@@ -2,8 +2,9 @@ package interfaces;
 
 import Personajes.Enano;
 import Personajes.WarhamerPersonaje;
+import armas.interfaces.ArmaAtaque;
 
 public interface ICombate{
-    public void atacar();
-    public void defender();
+    void atacar(WarhamerPersonaje victima);
+    void defender(ArmaAtaque arma);
 }

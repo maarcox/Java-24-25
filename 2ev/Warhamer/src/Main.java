@@ -8,6 +8,7 @@ public class Main {
     public static void main(String[] args) {
         WarhamerPersonaje pielverde1 = new PielVerde("PielVerde1", "Pisos Picados");
         WarhamerPersonaje enano1 = new Enano("Enano1", 10000);
+
         System.out.println(enano1);
         System.out.println(pielverde1);
     }
