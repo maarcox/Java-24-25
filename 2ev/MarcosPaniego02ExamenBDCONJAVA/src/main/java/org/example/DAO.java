@@ -7,8 +7,6 @@ public interface DAO<T> {
     void delete(int id); // Eliminar un objeto por ID
     void update(T t);    // Actualizar un objeto existente
     T find(int id);      // Buscar un objeto por ID
-
-    List<Pelicula> findAnio(int anio);
-
+    List<Curso> findCategoria(String nombre_categoria);
     List<T> findAll();   // Obtener todos los objetos de la base de datos
 }

@@ -18,6 +18,7 @@ public class Menu {
             System.out.println("   3. Buscar una película por ID");
             System.out.println("   4. Actualizar una película");
             System.out.println("   5. Eliminar una película (ID 2, por ejemplo)");
+            System.out.println("   6. Buscar una película por Año");
             System.out.println("----------------------------------------------------");
             System.out.println("                                                    ");
             res = scanner.nextInt();
@@ -64,6 +65,11 @@ public class Menu {
                     System.out.println("Escribe el id:");
                     int id5 = scanner.nextInt();
                     eliminarPelicula(id5);
+                    break;
+                case 6:
+                    System.out.println("Año de la película a buscar:");
+                    int anioBusqueda = scanner.nextInt();
+                    getPeliculasPorAnio(anioBusqueda);
                     break;
             }
         }
@@ -117,5 +123,20 @@ public class Menu {
         peliculaDAO.delete(id);
         System.out.println("");
     }
+
+    public void getPeliculasPorAnio(int anio) {
+        // Buscar películas por año
+        List<Pelicula> peliculas = peliculaDAO.findAnio(anio);
+        if (!peliculas.isEmpty()) {
+            System.out.println("\n📅 Películas del año " + anio + ":");
+            for (Pelicula p : peliculas) {
+                System.out.println(p);
+            }
+        } else {
+            System.out.println("⚠ No se encontraron películas del año " + anio);
+        }
+        System.out.println("");
+    }
+
 
 }

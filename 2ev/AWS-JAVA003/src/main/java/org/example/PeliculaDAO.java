@@ -1,6 +1,5 @@
 package org.example;
 
-import org.example.Pelicula;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -84,6 +83,31 @@ public class PeliculaDAO implements DAO<Pelicula> {
     }
 
     @Override
+    public List<Pelicula> findAnio(int anio) {
+        List<Pelicula> peliculas = new ArrayList<>();
+        String query = "SELECT * FROM peliculas WHERE anio = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setInt(1, anio);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                peliculas.add(new Pelicula(
+                        rs.getInt("id"),
+                        rs.getString("titulo"),
+                        rs.getString("director"),
+                        rs.getInt("anio")
+                ));
+            }
+            if (peliculas.isEmpty()) {
+                System.out.println("⚠ No se encontraron películas del año: " + anio);
+            }
+        } catch (SQLException e) {
+            System.out.println("❌ Error al buscar películas por año: " + e.getMessage());
+        }
+        return peliculas;
+    }
+
+
+    @Override
     public List<Pelicula> findAll() {
         List<Pelicula> peliculas = new ArrayList<>();
         String query = "SELECT * FROM peliculas ORDER BY id ASC";
@@ -103,7 +127,7 @@ public class PeliculaDAO implements DAO<Pelicula> {
         return peliculas;
     }
 
-    
+
 
 
 }
